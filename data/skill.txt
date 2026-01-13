@@ -1,0 +1,9 @@
+python
+machine learning
+deep learning
+nlp
+data analysis
+docker
+aws
+cloud
+sql

@@ -1,5 +1,6 @@
 from src.analysis.skill_extraction import load_skill,extract_skill
 from src.analysis.skill_matching import skill_matching
+from src.analysis.feedback_generator import generate_feedback
 from pathlib import Path
 def load_text(path):
     return Path(path).read_text(encoding="utf-8")
@@ -19,11 +20,14 @@ def main():
 
     print("==resume skill")
     print(resume_skill)
-    print("==jd skill")
+    print("==jd skill==")
     print(jd_skill)
 
     print("== skill matched ==")
-    print(skill_matching(resume_skill,skill))
+    skill_match=skill_matching(resume_skill,skill)
+    print(skill_match)
+    print("==Feedback Time==")
+    print(generate_feedback(skill_match["matched"],skill_match["missing"],skill_match["coverage"]))
 
 if __name__== "__main__":
     main()

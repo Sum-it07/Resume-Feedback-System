@@ -2,8 +2,14 @@ python
 machine learning
 deep learning
 nlp
+C++
+c
+C#
 data analysis
 docker
 aws
 cloud
 sql
+java
+javascript
+

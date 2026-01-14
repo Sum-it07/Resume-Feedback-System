@@ -1,4 +1,5 @@
 from src.analysis.skill_extraction import load_skill,extract_skill
+from src.analysis.skill_matching import skill_matching
 from pathlib import Path
 def load_text(path):
     return Path(path).read_text(encoding="utf-8")
@@ -20,6 +21,9 @@ def main():
     print(resume_skill)
     print("==jd skill")
     print(jd_skill)
+
+    print("== skill matched ==")
+    print(skill_matching(resume_skill,skill))
 
 if __name__== "__main__":
     main()

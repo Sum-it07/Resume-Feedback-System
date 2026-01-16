@@ -11,12 +11,13 @@ structured feedback.
 
 ## Approach
 This project uses deterministic, explainable rules instead of machine learning to ensure
-transparency and correctness.
+transparency and correctness.This is first milestone.
 
 ## Tech
 - Python
 - Regular Expressions
 - Git
+
 
 ## Status
 Completed (rule-based baseline)

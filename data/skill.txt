@@ -1,7 +1,8 @@
 python
 machine learning
+ml
 deep learning
-nlp
+natural language processing
 C++
 c
 C#

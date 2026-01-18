@@ -2,6 +2,7 @@ python
 machine learning
 ml
 deep learning
+NLP
 natural language processing
 C++
 c
@@ -13,4 +14,5 @@ cloud
 sql
 java
 javascript
-
+Programming
+pandas

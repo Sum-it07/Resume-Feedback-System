@@ -1,1 +1,7 @@
-We are looking for a machine learning engineer with Python, NLP, Docker, and cloud experience.
+We are hiring a Machine Learning Engineer.
+
+Requirements:
+- Machine Learning
+- Python
+- Deep Learning
+- Programming

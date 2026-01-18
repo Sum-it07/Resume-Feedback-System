@@ -1,8 +1,10 @@
 ALIASES = {
     "ml": "machine learning",
+    "machine learning":"machine learning",
     "dl": "deep learning",
     "ai": "artificial intelligence",
-    "nlp": "natural language processing"
+    "nlp": "nlp",
+    "natural language processing":"nlp"
 }
 
 def normalize_skill(skills):

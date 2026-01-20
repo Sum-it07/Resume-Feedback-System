@@ -4,6 +4,9 @@ from src.analysis.semantic_matcher import semantic_candidates
 from src.analysis.skill_reasoner import reason_about_skill
 from src.analysis.normalize_skill import normalize_skill 
 from src.analysis.feedback_generator import generate_feedback
+from src.analysis.document_loader import load_document
+from werkzeug.utils import secure_filename
+from pathlib import Path
 
 app=Flask(__name__)
 SKILL_LIST=load_skill("data/skill.txt")
@@ -13,13 +16,22 @@ def index():
     result = None
 
     if request.method == "POST":
-        resume = request.form["resume"]
-        jd = request.form["jd"]
+        resume_file = request.files["resume_file"]
+        jd_file = request.files["jd_file"]
+
+        resume_path=Path("uploads")/resume_file.filename
+        jd_path=Path("uploads")/jd_file.filename
+
+        resume_file.save(resume_path)
+        jd_file.save(jd_path)
+
+        resume_text=load_document(resume_path)
+        jd_text=load_document(jd_path)
 
         skill = load_skill("data/skill.txt")
 
-        resume_skill = normalize_skill(extract_skill(resume, skill))
-        jd_skill = normalize_skill(extract_skill(jd, skill))
+        resume_skill = normalize_skill(extract_skill(resume_text, skill))
+        jd_skill = normalize_skill(extract_skill(jd_text, skill))
 
         semantic_evidence = semantic_candidates(resume_skill, jd_skill)
         skill_match = reason_about_skill(resume_skill, jd_skill, semantic_evidence)

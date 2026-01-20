@@ -1,90 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Resume Feedback System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-
-        textarea {
-            width: 100%;
-        }
-
-        .box {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-top: 20px;
-        }
-
-        .matched {
-            color: green;
-        }
-
-        .missing {
-            color: red;
-        }
-
-        .partial {
-            color: orange;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-    <h1>Resume Feedback System</h1>
+    <div class="container">
 
-    <form method="post">
-        <h3>Resume</h3>
-        <textarea name="resume" rows="10">{{ result.resume_text if result }}</textarea>
+        <h1>Resume Feedback System</h1>
 
-        <h3>Job Description</h3>
-        <textarea name="jd" rows="10">{{ result.jd_text if result }}</textarea>
+        <div class="card">
+            <form method="post" enctype="multipart/form-data">
 
-        <br><br>
-        <button type="submit">Analyze</button>
-    </form>
+                <label>Resume</label>
+                <input type="file" name="resume_file" accept=".pdf,.docx,.txt">
 
-    {% if result %}
-    <div class="box">
-        <h2>Extracted Skills</h2>
+                <label>Job Description</label>
+                <input type="file" name="jd_file" accept=".pdf,.docx,.txt">
 
-        <p><strong>Resume Skills:</strong> {{ result.resume_skill }}</p>
-        <p><strong>Job Skills:</strong> {{ result.jd_skill }}</p>
-    </div>
+                <button type="submit">Analyze</button>
 
-    <div class="box">
-        <h2>Skill Analysis</h2>
+            </form>
+        </div>
 
-        <p class="matched">
-            <strong>Matched:</strong> {{ result["match"]["matched"] }}
-        </p>
+        {% if result %}
 
-        {% if result["match"].get("partial") %}
-        <p class="partial">
-            <strong>Partial Matches:</strong>
-            {{ result["match"]["partial"] }}
-        </p>
+        <div class="card">
+            <h2>Extracted Skills</h2>
+
+            <p><strong>Resume Skills</strong></p>
+            <div class="chip-group">
+                {% for skill in result.resume_skill %}
+                <span class="chip neutral">{{ skill }}</span>
+                {% endfor %}
+            </div>
+
+            <p><strong>Job Skills</strong></p>
+            <div class="chip-group">
+                {% for skill in result.jd_skill %}
+                <span class="chip neutral">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Skill Analysis</h2>
+
+            <p><strong>Matched</strong></p>
+            <div class="chip-group">
+                {% for skill in result["match"]["matched"] %}
+                <span class="chip matched">{{ skill }}</span>
+                {% endfor %}
+            </div>
+
+            {% if result["match"].get("partial") %}
+            <p><strong>Partial</strong></p>
+            <div class="chip-group">
+                {% for key, vals in result["match"]["partial"].items() %}
+                    {% for skill in vals %}
+                    <span class="chip partial">{{ skill }}</span>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <p><strong>Missing</strong></p>
+            <div class="chip-group">
+                {% for skill in result["match"]["missing"] %}
+                <span class="chip missing">{{ skill }}</span>
+                {% endfor %}
+            </div>
+
+            <p class="coverage">Coverage: {{ result["match"]["coverage"] }}%</p>
+        </div>
+
+        <div class="card">
+            <h2>Feedback</h2>
+            <p>{{ result.feedback }}</p>
+        </div>
+
         {% endif %}
 
-        <p class="missing">
-            <strong>Missing:</strong> {{ result["match"]["missing"] }}
-        </p>
-
-        <p>
-            <strong>Coverage:</strong> {{ result["match"]["coverage"] }}%
-        </p>
-
     </div>
-
-    <div class="box">
-        <h2>Feedback</h2>
-        <p>{{ result.feedback }}</p>
-    </div>
-    {% endif %}
 
 </body>
 

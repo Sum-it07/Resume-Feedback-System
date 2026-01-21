@@ -3,47 +3,31 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def semantic_candidates(resume_skill,required_skill,threshold=0.7):
-    resume_emb=model.encode(resume_skill)
-    required_emb=model.encode(required_skill)
-    similarity=cosine_similarity(required_emb,resume_emb)
+def semantic_candidates(
+    resume_skill,
+    required_skill,
+    threshold=0.6,
+    top_k=3
+):
+    resume_emb = model.encode(resume_skill)
+    required_emb = model.encode(required_skill)
+
+    similarity = cosine_similarity(required_emb, resume_emb)
 
     evidence = {}
 
-    for i, required_skill in enumerate(required_skill):
-        j = similarity[i].argmax()
-        score = similarity[i][j]
+    for i, jd_skill in enumerate(required_skill):
+        scored = []
 
-        if score >= threshold:
-            evidence[required_skill] = {
-                "resume_skill": resume_skill[j],
-                "score": round(float(score), 2)
-            }
+        for j, score in enumerate(similarity[i]):
+            if score >= threshold:
+                scored.append(
+                    (resume_skill[j], round(float(score), 2))
+                )
+
+        if scored:
+            # sort descending by similarity
+            scored.sort(key=lambda x: x[1], reverse=True)
+            evidence[jd_skill] = scored[:top_k]
 
     return evidence
-
-
-
-# def semantic_match(resume_skill,required_skill,threshold=0.7):
-#     resume_emb=model.encode(resume_skill)
-#     required_emb=model.encode(required_skill)
-#     similarity=cosine_similarity(required_emb,resume_emb)
-
-    # matched=[]
-    # missing=[]
-
-    # for i,skill in enumerate(required_skill):
-    #     max_score= similarity[i].max()
-    #     if max_score>=threshold:
-    #         matched.append(skill)
-    #     else:
-    #         missing.append(skill)
-    
-    # coverage=int((len(matched)/len(required_skill))*100)
-
-    # return {
-    #     "matched":matched,
-    #     "missing":missing,
-    #     "coverage":coverage
-    # }
-

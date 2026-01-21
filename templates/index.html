@@ -49,38 +49,92 @@
         <div class="card">
             <h2>Skill Analysis</h2>
 
-            <p><strong>Matched</strong></p>
-            <div class="chip-group">
-                {% for skill in result["match"]["matched"] %}
-                <span class="chip matched">{{ skill }}</span>
-                {% endfor %}
-            </div>
+            <!-- Matched -->
+            <div class="section">
+                <h3>Matched ({{ result.match.summary.matched }})</h3>
 
-            {% if result["match"].get("partial") %}
-            <p><strong>Partial</strong></p>
-            <div class="chip-group">
-                {% for key, vals in result["match"]["partial"].items() %}
-                    {% for skill in vals %}
-                    <span class="chip partial">{{ skill }}</span>
+                {% set matched = [] %}
+                {% for skill, info in result.match.skills.items() %}
+                {% if info.status == "matched" %}
+                {% set _ = matched.append(skill) %}
+                {% endif %}
+                {% endfor %}
+
+                {% if matched %}
+                <div class="chip-group">
+                    {% for skill in matched %}
+                    <span class="chip matched">{{ skill }}</span>
                     {% endfor %}
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <p><strong>Missing</strong></p>
-            <div class="chip-group">
-                {% for skill in result["match"]["missing"] %}
-                <span class="chip missing">{{ skill }}</span>
-                {% endfor %}
+                </div>
+                {% else %}
+                <p class="muted">No matched skills</p>
+                {% endif %}
             </div>
 
-            <p class="coverage">Coverage: {{ result["match"]["coverage"] }}%</p>
+
+            <!-- Partial -->
+            <div class="section">
+                <h3>Partial ({{ result.match.summary.partial }})</h3>
+
+                {% set partial = [] %}
+                {% for skill, info in result.match.skills.items() %}
+                {% if info.status == "partial" %}
+                {% set _ = partial.append((skill, info)) %}
+                {% endif %}
+                {% endfor %}
+
+                {% if partial %}
+                <div class="chip-group">
+                    {% for skill, info in partial %}
+                    <span class="chip partial" title="{{ info.evidence }}">
+                        {{ skill }}
+                        <span class="confidence">{{ (info.confidence * 100) | int }}%</span>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="muted">No partial matches</p>
+                {% endif %}
+            </div>
+
+            <!-- Missing -->
+            <div class="section">
+                <h3>Missing ({{ result.match.summary.missing }})</h3>
+
+                {% set missing = [] %}
+                {% for skill, info in result.match.skills.items() %}
+                {% if info.status == "missing" %}
+                {% set _ = missing.append(skill) %}
+                {% endif %}
+                {% endfor %}
+
+                {% if missing %}
+                <div class="chip-group">
+                    {% for skill in missing %}
+                    <span class="chip missing">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="muted">No missing skills </p>
+                {% endif %}
+            </div>
+
+
+            <div class="coverage-bar">
+                <div class="coverage-fill" style="width: {{ result.match.summary.coverage | int }}%;">
+                </div>
+
+                <span>{{ result.match.summary.coverage }}% Coverage</span>
+            </div>
         </div>
 
         <div class="card">
             <h2>Feedback</h2>
-            <p>{{ result.feedback }}</p>
+            <div class="feedback">
+                {{ result.feedback }}
+            </div>
         </div>
+
 
         {% endif %}
 

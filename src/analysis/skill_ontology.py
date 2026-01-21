@@ -1,11 +1,12 @@
 SKILL_ONTOLOGY = {
-
     # ===== Core AI / ML =====
     "artificial intelligence": {
         "machine learning",
         "knowledge representation",
         "expert systems",
-        "search algorithms"
+        "search algorithms",
+        "planning",
+        "reasoning"
     },
 
     "machine learning": {
@@ -14,7 +15,11 @@ SKILL_ONTOLOGY = {
         "reinforcement learning",
         "deep learning",
         "nlp",
-        "computer vision"
+        "computer vision",
+        "ensemble methods",
+        "time series analysis",
+        "anomaly detection",
+        "recommendation systems"
     },
 
     "deep learning": {
@@ -22,37 +27,59 @@ SKILL_ONTOLOGY = {
         "cnn",
         "rnn",
         "lstm",
-        "transformers"
+        "transformers",
+        "autoencoders",
+        "gan"
     },
 
     "nlp": {
         "tokenization",
         "text classification",
         "named entity recognition",
-        "sentiment analysis"
+        "sentiment analysis",
+        "language modeling",
+        "question answering",
+        "chatbots",
+        "topic modeling",
+        "word embeddings"
     },
 
     "computer vision": {
         "image classification",
         "object detection",
-        "image segmentation"
+        "image segmentation",
+        "face recognition",
+        "ocr",
+        "image augmentation",
+        "video analysis"
     },
 
     # ===== Programming =====
     "programming": {
         "python",
+        "r",
         "java",
         "c",
         "c++",
         "c#",
-        "javascript"
+        "javascript",
+        "bash/shell scripting"
     },
 
     "python": {
         "numpy",
         "pandas",
         "matplotlib",
-        "scikit-learn"
+        "seaborn",
+        "scikit-learn",
+        "tensorflow",
+        "pytorch",
+        "keras",
+        "opencv",
+        "nltk",
+        "spacy",
+        "huggingface transformers",
+        "Transformers"
     },
 
     "javascript": {
@@ -65,13 +92,18 @@ SKILL_ONTOLOGY = {
     "data analysis": {
         "data cleaning",
         "exploratory data analysis",
-        "data visualization"
+        "data visualization",
+        "feature engineering",
+        "feature selection",
+        "dimensionality reduction"
     },
 
     "data science": {
         "data analysis",
         "machine learning",
-        "statistics"
+        "statistics",
+        "probability",
+        "bayesian methods"
     },
 
     # ===== Databases =====
@@ -79,20 +111,37 @@ SKILL_ONTOLOGY = {
         "sql",
         "mysql",
         "postgresql",
-        "mongodb"
+        "mongodb",
+        "nosql",
+        "big data tools"
     },
 
-    # ===== Cloud / DevOps =====
+    # ===== Cloud / DevOps / MLOps =====
     "cloud": {
         "aws",
         "azure",
-        "gcp"
+        "gcp",
+        "cloud ml services"
     },
 
     "devops": {
         "docker",
         "kubernetes",
-        "ci/cd"
+        "ci/cd",
+        "infrastructure as code"
+    },
+
+    "mlops": {
+        "continuous integration",
+        "continuous deployment",
+        "model versioning",
+        "data versioning",
+        "experiment tracking",
+        "pipeline automation",
+        "model monitoring",
+        "model retraining automation",
+        "scalable model serving",
+        "feature store management"
     },
 
     # ===== Software Engineering =====
@@ -100,7 +149,9 @@ SKILL_ONTOLOGY = {
         "object oriented programming",
         "data structures",
         "algorithms",
-        "design patterns"
+        "design patterns",
+        "testing",
+        "code review"
     }
 }
 

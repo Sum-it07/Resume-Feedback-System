@@ -7,7 +7,11 @@ from src.analysis.feedback_generator import generate_feedback
 from src.analysis.document_loader import load_document
 from pathlib import Path
 
+from flask import Flask
+import os
+
 app = Flask(__name__)
+
 
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
@@ -61,4 +65,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

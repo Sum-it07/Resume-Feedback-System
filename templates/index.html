@@ -131,7 +131,7 @@
         <div class="card">
             <h2>Feedback</h2>
             <div class="feedback">
-                {{ result.feedback }}
+                {{ result.feedback | replace('\n', '<br>') | safe }}
             </div>
         </div>
 

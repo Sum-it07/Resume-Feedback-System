@@ -1,29 +1,31 @@
-ml
-deep learning
+Machine Learning
+Deep Learning
 NLP
-natural language processing
-C++
-c
-C#
-data analysis
-docker
-aws
-cloud
-sql
-java
-javascript
+Natural Language Processing
+Supervised Learning
+Unsupervised Learning
+Reinforcement Learning
+Transfer Learning
+Ensemble Methods
+Time Series Analysis
+Anomaly Detection
+Recommendation Systems
+Feature Engineering
+Model Selection & Evaluation
+Hyperparameter Tuning
+Cross-validation
 Programming
 Python
 R
 Java
+C
 C++
+C#
+JavaScript
 Julia
 MATLAB
 SQL
 Bash/Shell scripting
-Git
-GitHub
-GitLab
 TensorFlow
 PyTorch
 Keras
@@ -40,19 +42,9 @@ Pandas
 NumPy
 Matplotlib
 Seaborn
-Supervised Learning
-Unsupervised Learning
-Reinforcement Learning
-Deep Learning
-Transfer Learning
-Feature Engineering
-Model Selection & Evaluation
-Hyperparameter Tuning
-Cross-validation
-Ensemble Methods
-Time Series Analysis
-Anomaly Detection
-Recommendation Systems
+BERT
+GPT
+Convolutional Neural Networks
 Text Preprocessing
 Sentiment Analysis
 Named Entity Recognition
@@ -62,9 +54,6 @@ Question Answering Systems
 Chatbots
 Topic Modeling
 Word Embeddings
-Transformers
-BERT
-GPT
 Image Classification
 Object Detection
 Image Segmentation
@@ -72,20 +61,46 @@ Face Recognition
 OCR
 Image Augmentation
 Video Analysis
-Convolutional Neural Networks
+Data Analysis
 Data Cleaning
 Data Preprocessing
+Data Visualization
 Feature Selection
 Dimensionality Reduction
 Big Data Tools
 ETL Pipelines
 SQL Databases
 NoSQL Databases
-Model Deployment
+Git
+GitHub
+GitLab
+Docker
+Kubernetes
+Containerization
+AWS
+AWS SageMaker
+GCP AI Platform
+Azure ML
+Cloud
 Cloud Platforms
+Cloud ML Services
 MLOps
+Model Deployment
+Model Versioning
+Data Versioning
+Experiment Tracking
+Pipeline Automation
+Model Monitoring & Logging
+Model Retraining Automation
+Scalable Model Serving
 Version Control for Models
 Monitoring & Logging
+Continuous Integration (CI) for ML
+Continuous Deployment (CD) for ML
+Feature Store Management
+Infrastructure as Code
+Terraform
+CloudFormation
 Linear Algebra
 Calculus
 Probability & Statistics
@@ -94,26 +109,4 @@ Bayesian Methods
 Problem Solving
 Research & Literature Review
 Experiment Design
-Data Visualization
 Communication of Results
-Continuous Integration (CI) for ML
-Continuous Deployment (CD) for ML
-Model Versioning
-Data Versioning
-Experiment Tracking
-Pipeline Automation
-Model Monitoring & Logging
-Model Retraining Automation
-Scalable Model Serving
-Containerization
-Docker
-Kubernetes
-Cloud ML Services
-AWS
-AWS SageMaker
-GCP AI Platform
-Azure ML
-Feature Store Management
-Infrastructure as Code
-Terraform
-CloudFormation

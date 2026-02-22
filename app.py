@@ -6,8 +6,6 @@ from src.analysis.normalize_skill import normalize_skill
 from src.analysis.feedback_generator import generate_feedback
 from src.analysis.document_loader import load_document
 from pathlib import Path
-
-from flask import Flask
 import os
 
 app = Flask(__name__)

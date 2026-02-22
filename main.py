@@ -35,7 +35,7 @@ def main():
     skill_match=reason_about_skill(resume_skill,jd_skill,semantic_evidance)
     print(skill_match)
     print("==Feedback Time==")
-    print(generate_feedback(skill_match["matched"],skill_match["missing"],skill_match["coverage"]))
+    print(generate_feedback(skill_match))
 
 if __name__== "__main__":
     main()
